@@ -5,7 +5,7 @@ import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
-import "dotenv/config";
+import dotenv from "dotenv";
 
 //  app config
 const app = express();
@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(cors());
 
 // db connection
-connectDB();
+connectDB(
+  "mongodb+srv://FoodDelivery:FEFXRCXcwMFG8nR4@cluster0.gccbgza.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+);
 
 // api endpoints
 
@@ -36,4 +38,7 @@ app.listen(port, () => {
 
 // username FoodDelivery
 // password FEFXRCXcwMFG8nR4
-// mongodb+srv://FoodDelivery:FEFXRCXcwMFG8nR4@cluster0.gccbgza.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+// user :test4
+// username : test4@gmail.com
+// password : FOOTBALL@test1234

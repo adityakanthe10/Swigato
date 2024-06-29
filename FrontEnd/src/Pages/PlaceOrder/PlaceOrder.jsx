@@ -6,7 +6,7 @@ import axios from "axios"
 
 const PlaceOrder = () => {
 
-const {getTotalCartAmount,token,food_list,cartItems,url} =useContext(StoreContext)
+const {getTotalCartAmount,token,food_list,cartItems={},url} =useContext(StoreContext)
 
 const [data,setData] = useState({
 firstName:"",
@@ -36,21 +36,45 @@ phone:""
         orderItems.push(itemInfo);
       }
     })
+    // console.log(orderItems)
     let orderData = {
       address:data,
       items:orderItems,
       amount:getTotalCartAmount() +2,
     }
-    let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}});
-    if(response.data.success){
-      const {session_url} = response.data;
-      window.location.replace(session_url);
-    }
-    else{
-      alert("Error");
+    try {
+      
+      let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}});
+      console.log(response)
+      if(response.data.success){
+        const {session_url} = response.data;
+        window.location.replace(session_url);
+      }
+      else{
+        console.log(response.data.message)
+        alert(`Error + ${response}`);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("An error occuered while placing the order")
     }
   }
-
+//   try {
+//     let response = await axios.post(`${url}/api/order/place`, orderData, {
+//       headers: { token }
+//     });
+//     if (response.data.success) {
+//       const { session_url } = response.data;
+//       window.location.replace(session_url);
+//     } else {
+//       console.log("Error response:" ,response.data);
+//       alert(`Error: ${response.data.message}`);
+//     }
+//   } catch (error) {
+//     console.error('Order placement error:', error);
+//     alert('An error occurred while placing your order. Please try again.');
+//   }
+// };
 
   return (
     <form onSubmit={placeOrder} className='place-order'>
@@ -70,7 +94,7 @@ phone:""
           <input required name="zipcode" onChange={onChangeHandler} value={data.zipcode}type="text" placeholder="Zip code" />
           <input required name="country" onChange={onChangeHandler} value={data.country}type="text" placeholder="Country"/>
         </div>
-        <input required name="phone" onChange={onChangeHandler} value={data.phone}type="text" placeholder='phone' />
+        <input required name="phone" onChange={onChangeHandler} value={data.phone}type="text" placeholder='Phone' />
       </div>
       <div className="place-order-right">
       <div className="cart-total">
@@ -91,11 +115,11 @@ phone:""
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div>
           </div>
-              <button type="submit">PROCEED TO Payment</button>
+              <button type="submit">PROCEED TO PAYMENT</button>
         </div>
       </div>
     </form>
   )
 }
 
-export default PlaceOrder
+export default PlaceOrder;
