@@ -4,6 +4,7 @@ import {Routes,Route} from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import Cart from './Pages/Cart/Cart'
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder'
+import Verify from './Pages/Verify/Verify'
 import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
 
@@ -20,6 +21,7 @@ const[showLogin,setShowLogin] = useState(false)
         <Route path='/' element={<Home/>} />
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/order' element={<PlaceOrder/>} />
+        <Route path='/verify' element={<Verify/>}/>
         </Routes>
     </div>
     <Footer />

@@ -59,22 +59,6 @@ phone:""
       alert("An error occuered while placing the order")
     }
   }
-//   try {
-//     let response = await axios.post(`${url}/api/order/place`, orderData, {
-//       headers: { token }
-//     });
-//     if (response.data.success) {
-//       const { session_url } = response.data;
-//       window.location.replace(session_url);
-//     } else {
-//       console.log("Error response:" ,response.data);
-//       alert(`Error: ${response.data.message}`);
-//     }
-//   } catch (error) {
-//     console.error('Order placement error:', error);
-//     alert('An error occurred while placing your order. Please try again.');
-//   }
-// };
 
   return (
     <form onSubmit={placeOrder} className='place-order'>
