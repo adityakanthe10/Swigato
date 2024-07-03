@@ -42,3 +42,9 @@ app.listen(port, () => {
 // user :test4
 // username : test4@gmail.com
 // password : FOOTBALL@test1234
+
+// username : test4@gmail.com
+// password : FOOTBALL@test1234
+
+// "email":"user.aditya@gmail.com",
+// "password":"12345678"
