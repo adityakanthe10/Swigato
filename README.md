@@ -15,9 +15,7 @@ In the following sections, we will cover the technical details of the platform, 
 2. Front-end
 3. Back-end
 4. API Design
-5. Deployment
-6. Testing
-7. Future Enhancements
+5. Future Enhancements
 
 In summary, Swigato is designed to offer an intuitive and user-friendly experience for both customers and restaurant owners. The following sections provide a comprehensive overview of the platform's features and functionalities.
 
