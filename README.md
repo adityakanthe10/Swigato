@@ -15,7 +15,6 @@ In the following sections, we will cover the technical details of the platform, 
 2. Front-end
 3. Back-end
 4. API Design
-5. Future Enhancements
 
 In summary, Swigato is designed to offer an intuitive and user-friendly experience for both customers and restaurant owners. The following sections provide a comprehensive overview of the platform's features and functionalities.
 
@@ -123,13 +122,3 @@ The Swigato platform's API is designed following the REST architectural style. T
 
 In conclusion, the REST API design for the Swigato platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return. With this API design, Swigato will be able to provide a smooth user experience while ensuring security and stability.
 
-## Future Enhancements
-
-Potential future enhancements to the platform could include:
-1. **Mobile App**: Develop a mobile app for Android and iOS platforms.
-2. **Advanced Analytics**: Provide advanced analytics and reporting for restaurants.
-3. **AI-based Recommendations**: Implement AI-based recommendation systems for personalized user experiences.
-4. **Multi-language Support**: Add support for multiple languages to cater to a wider audience.
-5. **Subscription Plans**: Introduce subscription plans for premium features.
-
-These enhancements would improve the platform by providing additional functionalities, enhancing user experience, and expanding the platform's reach. Estimated timelines and priorities for implementing these enhancements will be provided based on project planning.
