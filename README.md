@@ -1,10 +1,10 @@
-# Swigato Food Delivery Platform
+# Swigato Food Delivery Platform [Website Link](https://food-delivery-app-frontend-krqb.onrender.com/)
 
 ![Main Page](images/mainpage.png)
 
 ## Project Description
 
-Swigato is a fully functional food delivery platform that enables users to browse, order, and rate food from various restaurants. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
+Swigato is a fully functional online food delivery platform that enables users to browse, and order food from various restaurants. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
 
 Swigato aims to provide:
 - A seamless and efficient food ordering experience for users.
@@ -48,20 +48,19 @@ Here is a high-level diagram that illustrates the architecture of the Swigato pl
 The front end of Swigato includes all the necessary pages that a food delivery platform should have. Some of these pages are:
 
 ### For Users:
-- **Homepage**: This page provides an overview of the platform and links to various restaurants.
-- **Restaurant List**: This page lists all the available restaurants along with their menus.
-- **Menu**: This page displays the menu items of a selected restaurant.
+- **Homepage**: This page provides an overview of the platform and various dishes. 
+- **Menu**: This page lists all the available dishes along with their price.
 - **Cart**: This page allows users to review their selected items before placing an order.
-- **Order History**: This page shows the user's past orders.
-- **Profile**: This page allows users to view and edit their profile details.
+- **Order**: This page shows the user's orders.
 
-### For Restaurants:
-- **Dashboard**: This page provides an overview of the restaurant's orders and statistics.
-- **Menu Management**: These pages allow the restaurant to add, update, and delete menu items.
+### For Restaurants Admin's:
+- **Menu Management**: This section includes:
+    - Add Menu Item: Allows the restaurant to add new menu items, including uploading images, setting names, descriptions, prices, and categories.
+    - List Menu Items: Displays all current menu items with options to view, update, and delete items.
 - **Order Management**: This page allows the restaurant to view and manage current orders.
-- **Profile**: This page allows the restaurant to view and edit their profile details.
 
-To build the front end, we use frameworks and libraries such as ReactJS, CSS, and Tailwind CSS for styling. To manage the state of the application, we use Redux.
+
+To build the front end, we use frameworks and libraries such as ReactJS, and CSS for styling. To manage the state of the application we use React's built-in state management system.
 
 ## Back End
 
@@ -76,7 +75,6 @@ The back end of Swigato provides a range of features and functionalities, includ
 2. **Order management**: Users can create, read, update, and delete orders, as well as manage order statuses.
 3. **Menu management**: Restaurants can create, read, update, and delete menu items.
 4. **Payment integration**: The platform integrates with payment gateways for handling transactions.
-5. **Cloud-based media management**: Swigato uses a cloud-based service for storing and managing media content such as images.
 
 ### Frameworks, Libraries, and Tools used
 
@@ -92,55 +90,40 @@ The back end of Swigato uses a range of frameworks, libraries, and tools to ensu
 
 The back end of Swigato uses a range of data models and database schemas to manage data, including:
 - **User schema**: Includes fields such as name, email, password, and order details.
-- **Restaurant schema**: Includes fields such as name, email, password, and menu details.
-- **Order schema**: Includes fields such as user details, restaurant details, items ordered, and order status.
-- **Menu schema**: Includes fields such as item name, description, price, and restaurant details.
-
-![Database Schema](images/schema.png)
+- **Order schema**: Includes fields such as user details, address details, items ordered, and order status.
+- **Food schema**: Includes fields such as food item name, description, price, category and image.
 
 ## API Design
 
 The Swigato platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
 
 ### Sample list of API endpoints and their functionalities:
-1. **`/api/auth/signup` (POST)** - Create a new user (customer or restaurant) account.
+1. **`/api/auth/register` (POST)** - Create a new user (customer) account.
 2. **`/api/auth/login` (POST)** – Log in using existing credentials and generate a JWT token.
-3. **`/api/auth/forgot-password` (POST)** - Send an email with a password reset link.
-4. **`/api/restaurants` (GET)** - Get a list of all available restaurants.
-5. **`/api/restaurants/:id` (GET)** - Get details of a specific restaurant by ID.
-6. **`/api/restaurants` (POST)** - Create a new restaurant.
-7. **`/api/restaurants/:id` (PUT)** - Update an existing restaurant by ID.
-8. **`/api/restaurants/:id` (DELETE)** - Delete a restaurant by ID.
-9. **`/api/orders` (GET)** - Get a list of all orders for a user or restaurant.
-10. **`/api/orders/:id` (GET)** - Get details of a specific order by ID.
-11. **`/api/orders` (POST)** - Create a new order.
-12. **`/api/orders/:id` (PUT)** - Update an existing order by ID.
-13. **`/api/orders/:id` (DELETE)** - Delete an order by ID.
+3. **`/api/cart/add` (POST)** - Add an item to the user's cart.
+4. **`/api/cart/remove` (POST)** - Remove an item from the user's cart.
+5. **`/api/cart/get` (POST)** - Retrieve the user's cart data.
+6. **`/api/food/add` (POST)** - Add a new food item with an image upload.
+7. **`/api/food/list` (GET)** - Get a list of all food items.
+8. **`/api/food/remove` (POST)** - Remove a food item by ID, including its image from the uploads folder.
+9. **`/api/orders/list` (GET)** - Get a list of all orders for the admin panel.
+10. **`/api/orders/userorders` (POST)** - Get a list of orders for a specific user by user ID.
+11. **`/api/orders/place` (POST)** - Create a new order and initiate a payment session with Stripe.
+12. **`/api/orders/verify` (POST)** - Verify the payment status of an order.
+13. **`/api/orders/status` (POST)** - Update the status of an existing order by order ID.
 
 ### Sample API requests and responses:
 
-1. **GET `/api/restaurants`**: Get all restaurants
-   * Response: A list of all restaurants in the database
-2. **GET `/api/restaurants/:id`**: Get a single restaurant by ID
-   * Response: The restaurant with the specified ID
-3. **POST `/api/restaurants`**: Create a new restaurant
-   * Request: The restaurant details in the request body
-   * Response: The newly created restaurant
-4. **PUT `/api/restaurants/:id`**: Update an existing restaurant by ID
-   * Request: The updated restaurant details in the request body
-   * Response: The updated restaurant
-5. **DELETE `/api/restaurants/:id`**: Delete a restaurant by ID
-   * Response: A success message indicating that the restaurant has been deleted.
+1. **GET `/api/food/list`**: Get a list of all food items
+   * Response: A list of all food items in the database
+2. **GET `/api/orders/list`**: Get a list of all orders 
+   * Response: The list with the specified user's ID
+3. **POST `/api/food/add`**: Create a new food item
+   * Request: The food details in the request body
+   * Response: The newly created food Item
+
 
 In conclusion, the REST API design for the Swigato platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return. With this API design, Swigato will be able to provide a smooth user experience while ensuring security and stability.
-
-## Deployment
-
-The deployment process, hosting environment, and infrastructure details will be outlined here. Typically, this might include information about using platforms like Heroku, AWS, or Netlify for deploying the front-end and back-end components, as well as any deployment scripts and configuration files.
-
-## Testing
-
-This section will describe the testing process, types of testing performed (unit tests, integration tests, end-to-end tests), and the test frameworks and tools used (like Jest, Mocha, Chai, etc.).
 
 ## Future Enhancements
 
